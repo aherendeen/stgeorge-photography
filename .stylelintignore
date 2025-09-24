@@ -1,0 +1,10 @@
+astro.config.mjs
+src/config/siteData.json.ts
+src/config/*.ts
+node_modules
+*.md
+**/*.md
+src/**/*.md
+eslint.config.mjs
+astro.config.mjs
+LICENSE

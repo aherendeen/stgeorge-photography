@@ -1,0 +1,17 @@
+dist
+.astro
+node_modules
+.netlify
+netlify
+# **/*.mdx
+.tours
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+scripts/
+# ignore license text file
+LICENSE

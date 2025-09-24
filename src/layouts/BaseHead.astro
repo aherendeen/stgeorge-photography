@@ -1,0 +1,67 @@
+---
+import Seo from "@components/Seo/Seo.astro";
+import siteData from "@config/siteData.json";
+import { type CollectionEntry } from "astro:content";
+import { ClientRouter } from "astro:transitions";
+
+export interface Props {
+	type?: "general" | undefined;
+	title: string;
+	description: string;
+	image?: ImageMetadata;
+	noindex?: boolean;
+	fontsToPreload?: string[]; // Array of font file paths to preload
+}
+
+const {
+	type = "general",
+	title,
+	description,
+	image,
+	noindex = false,
+	fontsToPreload = [],
+} = Astro.props as Props;
+
+// Font file paths
+const fontFiles = {
+	CinzelDecorative: "/node_modules/@fontsource/cinzel-decorative/files/cinzel-decorative-latin-400-normal.woff2",
+	PlayfairDisplayVariable: "/node_modules/@fontsource-variable/playfair-display/files/playfair-display-latin-wght-normal.woff2",
+	RalewayVariable: "/node_modules/@fontsource-variable/raleway/files/raleway-latin-wght-normal.woff2",
+	WorkSansVariable: "/node_modules/@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2",
+};
+import WorkSansVariable from "@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2";
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Improve mobile behavior and privacy -->
+<meta name="theme-color" content="#ffffff" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+<!-- Conditionally preload only the fonts needed for this page -->
+{fontsToPreload.map(fontKey => (
+	<link
+		rel="preload"
+		href={fontFiles[fontKey]}
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+))}
+<link rel="preload" href={fontFiles.CinzelDecorative} as="font" type="font/woff2" crossorigin="anonymous" />
+
+<!-- Favicons. Generated from https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
+<!-- no fallback as I saw issues with firefox fallback -->
+{siteData.useViewTransitions ? <ClientRouter fallback="none" /> : null}
+<link rel="manifest" href="/favicons/site.webmanifest" />
+
+<!-- other -->
+<meta name="generator" content={Astro.generator} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<Seo type={type} title={title} description={description} image={image} noindex={noindex} />
+
+<!-- no fallback as I saw issues with firefox fallback -->
+{siteData.useViewTransitions && <ClientRouter fallback="none" />}

@@ -1,0 +1,59 @@
+---
+// layout
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { type InferGetStaticPropsType } from "astro";
+import { type CollectionEntry, getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+	const otherPages: CollectionEntry<"otherPages">[] = await getCollection(
+		"otherPages",
+		({ data }) => {
+			// filter out draft pages
+			return data.draft !== true;
+		},
+	);
+	return otherPages.map((page) => ({
+		params: { page: page.id },
+		props: page,
+	}));
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const page = Astro.props as Props;
+
+// shared render variables
+let isNotFound = false;
+let Content: any = null;
+let title = "";
+let description = "";
+
+if (!page || !page.data) {
+	// no matching page - show 404
+	isNotFound = true;
+	title = "404";
+	description = "Page not found.";
+} else {
+	// convert markdown to html
+	const rendered = await render(page);
+	Content = rendered.Content;
+	({ title, description } = page.data);
+}
+---
+
+<BaseLayout title={title} description={description} noindex={isNotFound}>
+	{isNotFound ? (
+		<section class="mx-auto max-w-3xl px-4 pt-24 md:pt-36 text-center">
+			<h1 class="h1 description">Page not found</h1>
+			<p class="mt-4">The page you requested does not exist.</p>
+		</section>
+	) : (
+		<section class="mx-auto max-w-3xl px-4 pt-24 md:pt-36">
+			<h1 class="h1 description text-center" aria-label={title}>{title}</h1>
+			<div
+				class="text-base-content markdown-content mt-8 max-w-none text-sm md:mt-12 md:px-8 md:text-base"
+			>
+				{Content ? <Content /> : null}
+			</div>
+		</section>
+	)}
+</BaseLayout>

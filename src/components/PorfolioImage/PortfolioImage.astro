@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+	image: ImageMetadata;
+	numCols: number;
+}
+
+const { image, numCols } = Astro.props as Props;
+
+const maxWidth = 1120;
+const width = maxWidth / numCols;
+---
+
+<div class="h-full w-full max-w-6xl">
+	<Image
+		src={image}
+		alt={(() => {
+			try {
+				const parts = (image.src || "").split("/");
+				const filename = parts[parts.length - 1] || "portfolio image";
+				return `Portfolio image: ${filename}`;
+			} catch (e) {
+				return "Portfolio image";
+			}
+		})()}
+		width={width}
+		quality="high"
+		densities={[1.5, 2]}
+		class="h-auto min-h-full w-full min-w-full object-cover"
+	/>
+</div>

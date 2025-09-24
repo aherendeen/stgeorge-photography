@@ -1,0 +1,1 @@
+Sitemap: https://stgeorgephotography.vercel.app/sitemap-index.xml
