@@ -40,30 +40,30 @@ const today = new Date();
 
 		<!-- socials -->
 		<div class="text-primary-500 mt-8 flex justify-center gap-4">
-			<a href="https://x.com/_aherendeen" target="_blank" rel="noopener noreferrer">
-				<Icon name="tabler:brand-github" class="size-6 transition hover:opacity-80" aria-hidden="true" />
+			<a href="https://github.com/aherendeen" target="_blank" rel="noopener noreferrer" class="social-btn group">
+				<Icon name="tabler:brand-github" class="social-icon size-6" aria-hidden="true" />
 				<span class="sr-only">Github</span>
 			</a>
-			<a href="https://x.com/_aherendeen" target="_blank" rel="noopener noreferrer">
+			<a href="https://x.com/_aherendeen" target="_blank" rel="noopener noreferrer" class="social-btn group">
 				<Icon
 					name="tabler:brand-x"
-					class="size-6 transition hover:opacity-80"
+					class="social-icon size-6"
 					aria-hidden="true"
 				/>
 				<span class="sr-only">X</span>
 			</a>
-			<a href="https://bsky.app/aherendeen" target="_blank" rel="noopener noreferrer">
+			<a href="https://bsky.app/aherendeen" target="_blank" rel="noopener noreferrer" class="social-btn group">
 				<Icon
 					name="tabler:brand-bluesky"
-					class="size-6 transition hover:opacity-80"
+					class="social-icon size-6"
 					aria-hidden="true"
 				/>
-				<span class="sr-only">Youtube</span>
+				<span class="sr-only">Bluesky</span>
 			</a>
-			<a href="https://instagram.com/andrewherendeen" target="_blank" rel="noopener noreferrer">
+			<a href="https://instagram.com/andrewherendeen" target="_blank" rel="noopener noreferrer" class="social-btn group">
 				<Icon
 					name="tabler:brand-instagram"
-					class="size-6 transition hover:opacity-80"
+					class="social-icon size-6"
 					aria-hidden="true"
 				/>
 				<span class="sr-only">Instagram</span>
@@ -72,13 +72,71 @@ const today = new Date();
 
 		<!-- copyright -->
 		<div class="mt-4 mb-2 text-center text-sm opacity-80">
-			&copy; {today.getFullYear()} a theme by <a
-				href="https://stgeorgephotography.vercel.app"
-				class="hover:text-primary-600 transition"
+			&copy; {today.getFullYear()} a website by <a
+				href="https://github.com/aherendeen"
+				class="hover:text-primary-600 transition author-link"
 				target="_blank"
 				rel="noopener">Andrew Herendeen</a
 			>
 			<!-- {siteData.name}. All rights reserved. -->
 		</div>
+
+		<style>
+		/* Only enable hover animations on devices that actually support hover (keeps mobile/touch untouched) */
+		@media (hover: hover) and (pointer: fine) {
+			.social-btn {
+			position: relative;
+			display: inline-block;
+			}
+			.social-icon {
+			display: inline-block;
+			transition: transform 260ms cubic-bezier(.2,.9,.2,1), filter 260ms, opacity 200ms;
+			will-change: transform, filter, opacity;
+			}
+			.social-btn:hover .social-icon {
+			transform: translateY(-4px) rotate(-6deg) scale(1.08);
+			filter: drop-shadow(0 8px 20px rgba(0,0,0,0.12)) saturate(1.05);
+			opacity: 0.98;
+			}
+			/* Soft glow / base under icon */
+			.social-btn::after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: -6px;
+			width: 0;
+			height: 6px;
+			background: radial-gradient(ellipse at center, rgba(99,102,241,0.14), rgba(0,0,0,0));
+			opacity: 0;
+			transition: width 260ms, opacity 260ms;
+			pointer-events: none;
+			border-radius: 999px;
+			}
+			.social-btn:hover::after { width: 44%; opacity: 0.45; }
+
+			/* Footer nav underline and lift are intentionally NOT applied here so the
+			   layout above socials remains unchanged per user's request. */
+
+			/* Author link gradient underline reveal */
+			.author-link {
+			position: relative;
+			background-image: linear-gradient(90deg, rgb(48, 22, 22), rgb(75, 78, 79));
+			background-repeat: no-repeat;
+			background-size: 0% 2px;
+			background-position: left bottom;
+			transition: background-size 240ms ease, color 200ms;
+			}
+			.author-link:hover { background-size: 100% 2px; color: rgb(42, 90, 110); }
+		}
+
+		/* Respect users who prefer reduced motion */
+		@media (prefers-reduced-motion: reduce) {
+			.social-icon, .footer-links a, .site-logo-wrap, .author-link {
+			transition: none !important;
+			transform: none !important;
+			}
+		}
+		</style>
 	</div>
 </footer>
