@@ -1,0 +1,22 @@
+---
+import Contact from "@components/Contact/Contact.astro";
+import FeatureNumbers from "@components/Feature/FeatureNumbers.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact St. George Photography" description="Reach out to Andrew Herendeen to inquire about wedding, engagement, or elopement photography.">
+        <section class="site-container flex flex-col gap-6 pt-28 pb-12 text-center md:pt-40 md:pb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-primary-500">Contact</p>
+                <h1 class="font-heading-1 text-4xl leading-tight text-pretty md:text-5xl">
+                        Let's plan the moments you'll never forget
+                </h1>
+                <p class="mx-auto max-w-3xl text-base text-slate-600 md:text-lg">
+                        Share your wedding date, location, and any special requests. I'll respond within 1-2 business days with
+                        availability details and next steps.
+                </p>
+        </section>
+
+        <Contact class="pb-16" />
+
+        <FeatureNumbers />
+</BaseLayout>

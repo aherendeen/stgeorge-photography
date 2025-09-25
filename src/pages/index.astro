@@ -1,12 +1,9 @@
 ---
-import About from "@components/About/About.astro";
 import Button from "@components/Button/Button.astro";
-import Contact from "@components/Contact/Contact.astro";
 import FeatureNumbers from "@components/Feature/FeatureNumbers.astro";
 // components
 import Hero from "@components/Hero/Hero.astro";
 import PortfolioThreeCards from "@components/Portfolio/PortfolioThreeCards.astro";
-import PricingThreeCards from "@components/Pricing/PricingThreeCards.astro";
 import Testimonials from "@components/Testimonials/Testimonials.astro";
 // data
 import siteData from "@config/siteData.json";
@@ -16,11 +13,23 @@ import { Image } from "astro:assets";
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description} navStartStyle="white">
-	<Hero />
-	<FeatureNumbers />
-	<PortfolioThreeCards />
-	<Testimonials />
-	<PricingThreeCards />
-	<About />
-	<Contact />
+        <Hero />
+        <FeatureNumbers />
+        <PortfolioThreeCards />
+        <Testimonials />
+        <section class="bg-base-100 py-16">
+                <div class="site-container flex flex-col gap-6 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                        <div class="max-w-2xl">
+                                <h2 class="h3 text-pretty uppercase">Plan your perfect photo experience</h2>
+                                <p class="mt-4 text-base text-slate-600 md:text-lg">
+                                        Explore detailed information about the approach, packages, and booking process or reach out to start a custom quote.
+                                </p>
+                        </div>
+                        <div class="flex flex-col gap-4 md:flex-row">
+                                <Button href="/about/" variant="secondary" class="px-6 py-3">About</Button>
+                                <Button href="/pricing/" variant="outline" class="px-6 py-3">Pricing</Button>
+                                <Button href="/contact/" variant="primary" class="px-6 py-3">Contact</Button>
+                        </div>
+                </div>
+        </section>
 </BaseLayout>
