@@ -2,30 +2,36 @@
 import { type navLinkItem } from "@config/navData.json";
 
 interface Props {
-	navItem: navLinkItem;
-	class?: string;
+        navItem: navLinkItem;
+        class?: string;
+        isMobile?: boolean;
 }
 
-const { navItem, class: className } = Astro.props as Props;
+const {
+        navItem,
+        class: className = "",
+        isMobile = false,
+} = Astro.props as Props;
 const { text, link, newTab = false } = navItem;
 
 // if the current page is the same as the link, we can change the styling
 ---
 
 <li>
-	<a
-		class:list={[
-			`nav__link--base flex w-full items-center ${className}`,
-			{
-				// styling for current active page link
-				"": Astro.url.pathname === link,
-			},
-		]}
-		href={link}
-		target={newTab ? "_blank" : undefined}
-		rel={newTab ? "noopener noreferrer" : undefined}
-		aria-label={text}
-	>
-		{text}
-	</a>
+        <a
+                class:list={[
+                        `nav__link--base flex w-full items-center ${className}`,
+                        {
+                                "": Astro.url.pathname === link,
+                                "justify-center py-3 text-xl": isMobile,
+                        },
+                ]}
+                href={link}
+                target={newTab ? "_blank" : undefined}
+                rel={newTab ? "noopener noreferrer" : undefined}
+                aria-label={text}
+                data-mobile-nav-link={isMobile ? "true" : undefined}
+        >
+                {text}
+        </a>
 </li>

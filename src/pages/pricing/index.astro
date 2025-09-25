@@ -1,0 +1,33 @@
+---
+import Button from "@components/Button/Button.astro";
+import PricingThreeCards from "@components/Pricing/PricingThreeCards.astro";
+import Testimonials from "@components/Testimonials/Testimonials.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Wedding Photography Pricing" description="Discover the wedding, elopement, and engagement photography packages available from St. George Photography.">
+        <section class="site-container flex flex-col gap-6 pt-28 pb-12 text-center md:pt-40 md:pb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-primary-500">Pricing</p>
+                <h1 class="font-heading-1 text-4xl leading-tight text-pretty md:text-5xl">
+                        Packages crafted to fit the celebration you are planning
+                </h1>
+                <p class="mx-auto max-w-3xl text-base text-slate-600 md:text-lg">
+                        Transparent collections make it easy to choose the level of coverage that feels right. Every package includes
+                        professional editing, thoughtful storytelling, and the flexibility to add-on the moments that matter most.
+                </p>
+        </section>
+
+        <PricingThreeCards />
+
+        <section class="site-container flex flex-col items-center gap-6 py-16 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                <div class="max-w-2xl">
+                        <h2 class="h3 text-pretty uppercase">Need something custom?</h2>
+                        <p class="mt-4 text-base text-slate-600 md:text-lg">
+                                Share your vision, location, and timeline for a custom proposal. I will tailor coverage so every meaningful moment is captured.
+                        </p>
+                </div>
+                <Button href="/contact/" variant="primary" class="px-6 py-3 text-lg">Start a conversation</Button>
+        </section>
+
+        <Testimonials />
+</BaseLayout>

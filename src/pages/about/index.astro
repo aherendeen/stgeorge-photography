@@ -1,0 +1,38 @@
+---
+import About from "@components/About/About.astro";
+import Button from "@components/Button/Button.astro";
+import Testimonials from "@components/Testimonials/Testimonials.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About St. George Photography" description="Learn more about Andrew Herendeen and the story behind St. George Photography.">
+        <section class="site-container flex flex-col gap-6 pt-28 pb-12 text-center md:pt-40 md:pb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-primary-500">About</p>
+                <h1 class="font-heading-1 text-4xl leading-tight text-pretty md:text-5xl">
+                        Storytelling through timeless wedding photography
+                </h1>
+                <p class="mx-auto max-w-3xl text-base text-slate-600 md:text-lg">
+                        I believe in preserving the feeling of your celebration—those candid looks, the big embraces, and the
+                        subtle glances you might have missed. Learn more about the approach that guides every gallery I deliver.
+                </p>
+                <div class="mt-4 flex justify-center">
+                        <Button href="/portfolio/" variant="outline">Explore the portfolio</Button>
+                </div>
+        </section>
+
+        <About />
+
+        <Testimonials />
+
+        <section class="bg-base-100 py-16">
+                <div class="site-container flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                        <div class="max-w-2xl">
+                                <h2 class="h3 text-pretty uppercase">Ready to start planning your gallery?</h2>
+                                <p class="mt-4 text-base text-slate-600 md:text-lg">
+                                        Share the details of your day, and I will craft a photography experience that fits your story.
+                                </p>
+                        </div>
+                        <Button href="/contact/" variant="primary" class="px-6 py-3 text-lg">Get in touch</Button>
+                </div>
+        </section>
+</BaseLayout>
