@@ -1,0 +1,95 @@
+---
+import About from "@components/About/About.astro";
+import Button from "@components/Button/Button.astro";
+import Testimonials from "@components/Testimonials/Testimonials.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About St. George Photography" description="Learn more about Andrew Herendeen and the story behind St. George Photography.">
+        <section class="site-container flex flex-col gap-6 pt-28 pb-12 text-center md:pt-40 md:pb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-primary-500">About</p>
+                <h1 class="font-heading-1 text-4xl leading-tight text-pretty md:text-5xl">
+                        Storytelling through timeless wedding photography
+                </h1>
+                <p class="mx-auto max-w-3xl text-base text-slate-600 md:text-lg">
+                        I believe in preserving the feeling of your celebration—those candid looks, the big embraces, and the
+                        subtle glances you might have missed. Learn more about the approach that guides every gallery I deliver.
+                </p>
+                <div class="mt-4 flex justify-center">
+                        <Button href="/portfolio/" variant="outline">Explore the portfolio</Button>
+                </div>
+        </section>
+
+        <About />
+
+        <section class="bg-base-100 py-16">
+                <div class="site-container grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-start">
+                        <div class="space-y-6">
+                                <h2 class="font-heading-1 text-3xl leading-tight text-pretty md:text-4xl">
+                                        What it's like to work together
+                                </h2>
+                                <p class="text-base text-slate-700 md:text-lg">
+                                        Building trust is the foundation of effortless photography. From our first call through
+                                        the final delivery, you'll have a clear roadmap.
+                                        A partner who listens closely to your priorities stays with you every step.
+                                </p>
+                                <ul class="space-y-4 text-left text-base text-slate-700 md:text-lg">
+                                        <li class="rounded-2xl bg-white/80 p-5 shadow-sm">
+                                                <strong class="block font-heading-1 text-lg text-primary-600">
+                                                        Before the wedding
+                                                </strong>
+                                                <span>
+                                                        We create a photography timeline, review family groupings, and share
+                                                        inspiration so you can move into the celebration feeling confident.
+                                                </span>
+                                        </li>
+                                        <li class="rounded-2xl bg-white/80 p-5 shadow-sm">
+                                                <strong class="block font-heading-1 text-lg text-primary-600">
+                                                        During the celebration
+                                                </strong>
+                                                <span>
+                                                        Expect a calm presence who directs when needed, supports your planner
+                                                        and creative team, and stays ready for the spontaneous moments that make
+                                                        your story yours.
+                                                </span>
+                                        </li>
+                                        <li class="rounded-2xl bg-white/80 p-5 shadow-sm">
+                                                <strong class="block font-heading-1 text-lg text-primary-600">
+                                                        After the vows
+                                                </strong>
+                                                <span>
+                                                        Highlights arrive quickly, followed by a hand-edited gallery, bespoke
+                                                        album designs, and guidance on preserving your images for generations.
+                                                </span>
+                                        </li>
+                                </ul>
+                        </div>
+                        <div class="space-y-6 rounded-3xl border border-primary-100 bg-white/70 p-8 shadow-sm">
+                                <h3 class="font-heading-1 text-2xl text-primary-600">A few quick facts</h3>
+                                <ul class="space-y-3 text-base text-slate-700 md:text-lg">
+                                        <li>Based in St. George with a deep love for red rock landscapes and desert light.</li>
+                                        <li>Available for weddings across Utah, Arizona, Nevada, and beyond.</li>
+                                        <li>
+                                                Partnered with trusted planners, florists, and videographers to ensure a seamless
+                                                vendor team.
+                                        </li>
+                                        <li>Committed to inclusive celebrations of all backgrounds and identities.</li>
+                                </ul>
+                        </div>
+                </div>
+        </section>
+
+        <Testimonials />
+
+        <section class="bg-base-100 py-16">
+                <div class="site-container flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                        <div class="max-w-2xl">
+                                <h2 class="h3 text-pretty uppercase">Ready to start planning your gallery?</h2>
+                                <p class="mt-4 text-base text-slate-600 md:text-lg">
+                                        Share the details of your day, and I will craft a photography experience that fits your story.
+                                </p>
+                        </div>
+                        <Button href="/contact/" variant="primary" class="px-6 py-3 text-lg">Get in touch</Button>
+                </div>
+        </section>
+</BaseLayout>

@@ -1,23 +1,26 @@
 ---
 /**
- * * These are cards with a large number, and description below
+ * * Reusable card used for highlighting a short title with supporting copy.
  */
 
 interface Props {
-	largeText: string;
-	description: string;
-	rest?: any; // catch-all for any additional parameters, such as "aria-label"
+        title: string;
+        description: string;
+        rest?: any; // catch-all for any additional parameters, such as "aria-label"
 }
 
-const { largeText, description, ...rest } = Astro.props as Props;
+const { title, description, ...rest } = Astro.props as Props;
 ---
 
-<div {...rest} class="flex flex-col gap-3 text-center">
-	<h3 class="font-decorative text-primary-500 text-[8rem] leading-none" aria-label={description}>
-		<span aria-hidden={true}>{largeText}</span>
-	</h3>
+<div
+        {...rest}
+        class="flex flex-col gap-4 rounded-3xl border border-white/60 bg-white/70 p-8 text-left shadow-sm backdrop-blur-sm"
+>
+        <h3 class="font-heading-1 text-2xl text-primary-600">
+                {title}
+        </h3>
 
-	<p class="description font-heading-1 pr-2 text-2xl">
-		{description}
-	</p>
+        <p class="text-base text-slate-700 md:text-lg">
+                {description}
+        </p>
 </div>
